@@ -1,0 +1,27 @@
+<ejs-combobox #sports
+                 popupHeight="250px"
+                 floatLabelType="Auto"
+                 sortOrder="Ascending"
+                 width="100%"
+                 filterType="Contains"
+                 [allowFiltering]="true"
+                 [placeholder]="label"
+                 [autofill]="true"
+                 [popupWidth]="300"
+                 [fields]="fields"
+                 [dataSource]="autoCompleteDataSource"
+                  [itemTemplate]='itemTemplate'>
+                 
+	<ng-template #itemTemplate="" let-comboBoxDataSource="">
+		<table>
+			<tr>
+				<td>
+					{{comboBoxDataSource.Game}}
+				</td>
+				<td>
+					{{comboBoxDataSource.Description}}
+				</td>
+			</tr>
+		</table>
+	</ng-template>
+  </ejs-combobox>

@@ -1,0 +1,60 @@
+<h4>Sample List-Detail Component</h4>
+
+<p><b>Exercise</b> <br /></p>
+<ul>
+  <li>
+    The list index component should get a list of <b>Farms</b> and display them
+  </li>
+  <li>
+    Once you pick one of the records it should be displayed on the detail
+    component
+  </li>
+  <li>
+    Implementation should be on this same platform (<a
+      href="https://stackblitz.com/"
+      >stackblitz</a
+    >) so you
+    <b>have to fork this repo</b>
+  </li>
+</ul>
+
+<p><b>TODOs</b></p>
+<ul style="font-size:small">
+  <li>Call a restful api or fetch the data asynchronously</li>
+  <li>
+    Add three filter option to the <b>dropdown</b>, by "No", "Active Date" and
+    default should be "All", whenever one is picked it should filter the data as
+    the following
+    <ul>
+      <li>No: All farms that begin with 100</li>
+      <li>Active Date: All the farms with the year equal to 2020</li>
+      <li>All: All the farms</li>
+    </ul>
+  </li>
+  <li>
+    Connect the list and detail components with a service
+    (selected-farm.service)
+  </li>
+  <li>
+    Implement the "Error Button" that will fire the api call and should throw an
+    exception, notify the user that an exception has occurred
+  </li>
+</ul>
+
+<p><strong>Bonus</strong></p>
+<p>
+  Implement the
+  <a href="https://ej2.syncfusion.com/angular/demos/#/material/grid/over-view"
+    >Syncfusion Grid</a
+  >, add logic to display the detail when you select a row (Farm).
+</p>
+<p>
+  The references are already added on this project so you will be able to use
+  ejs-grid.
+</p>
+<div class="row mt-3">
+  <div class="col-md-12">
+    <mt-sample-list></mt-sample-list>
+    <mt-sample-detail></mt-sample-detail>
+  </div>
+</div>

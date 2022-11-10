@@ -1,0 +1,47 @@
+<h5>Farms List</h5>
+<div class="row">
+  <div class="col-md-6">
+    <!-- This is the filter: by No and by Active Date -->
+    <div class="form-group">
+      <label for="filterDowpDown">Filter By</label>
+      <select
+        name="filterDowpDown"
+        [(ngModel)]="filterSelected"
+        [value]="filterList[0]"
+        class="form-control"
+				(ngModelChange)="searchData()"
+      >
+        <option
+          [value]="option"
+          *ngFor="let option of filterList"
+          [selected]="All"
+        >
+          {{ option }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <button class="btn btn-outline-danger btn-sm">Error Button</button>
+  </div>
+</div>
+<div class="row mt-2">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Farm No</th>
+        <th scope="col">Farm Name</th>
+        <th scope="col">Active Date</th>
+      </tr>
+			<tr *ngFor="let farm of dataFiltered">
+				<td scope="col">{{farm.FarmNo}}</td>
+				<td scope="col">{{farm.FarmName}}</td>
+				<td scope="col">{{farm.ActiveDate}}</td>
+			</tr>
+    </thead>
+  </table>
+</div>
+
+<div class="row">
+  <!-- The sf grid should be here -->
+</div>

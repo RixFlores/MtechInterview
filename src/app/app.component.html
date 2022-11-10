@@ -1,0 +1,18 @@
+<div class="container"> 
+<hello name="{{ name }}"></hello>
+	<ul class="nav nav-tabs">
+		
+		<li class="nav-item \dropdown">
+			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pick an Option</a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" [routerLink]="'./list-detail'">List - Detail Exercise</a>
+				<!-- <a class="dropdown-item" [routerLink]="'./auto-complete'">Auto Complete</a> -->
+			</div>
+		</li>
+		
+	</ul>
+
+</div>
+<div class="container mt-3">
+	<router-outlet></router-outlet>
+</div>
