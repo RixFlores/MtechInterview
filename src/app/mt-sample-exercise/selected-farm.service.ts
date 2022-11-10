@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import * as data from './mock-data.json';
 
 @Injectable({
@@ -7,6 +9,7 @@ import * as data from './mock-data.json';
 export class SelectedFarmService {
   public item: any;
 
+  constructor(private http: HttpClient) {}
   getData() {
     return data.default;
   }
@@ -15,5 +18,8 @@ export class SelectedFarmService {
   }
   getItem() {
     return this.item;
+  }
+  getError(): Observable<any> {
+    return this.http.get('https://reqres.in/api/');
   }
 }

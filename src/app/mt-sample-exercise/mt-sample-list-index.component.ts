@@ -6,13 +6,10 @@ import {
 } from '@angular/core';
 import { DataService } from './data.service';
 import { SelectedFarmService } from './selected-farm.service';
-import { from, Observable, Subject, throwError } from 'rxjs';
-import { catchError, filter, map, takeUntil } from 'rxjs/operators';
+import { from, Observable } from 'rxjs';
 import { Farm } from './farm';
 import { farmDirective } from './farm.directive';
 import { MtSampleDetailComponent } from './mt-sample-detail.component';
-import { HttpClient } from '@angular/common/http';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'mt-sample-list',
@@ -24,11 +21,12 @@ export class MtSampleListIndexComponent implements OnInit {
   public filterSelected: string = 'All';
   public dataFiltered!: Observable<any>;
   public data: Array<Farm> = [];
+  public snackbar: boolean = false;
 
   constructor(
     private selectedFarm: SelectedFarmService,
     private componentFactoryResolver: ComponentFactoryResolver,
-    private http: HttpClient
+    private dataService: DataService
   ) {}
 
   ngOnInit() {
@@ -37,7 +35,7 @@ export class MtSampleListIndexComponent implements OnInit {
 
   searchData() {
     this.data = [];
-    this.dataFiltered = from(this.selectedFarm.getData());
+    this.dataFiltered = from(this.dataService.getData());
     this.dataFiltered.subscribe(
       (success) => {
         if (this.filterSelected == 'Active Date') {
@@ -69,16 +67,19 @@ export class MtSampleListIndexComponent implements OnInit {
   }
 
   errorResponse() {
-    console.log('LLEGUE');
-    return this.http
-      .get('https://skepsi.azurewebsites.net/api/groups', {})
-      .pipe(
-        map((resp) => resp),
-        catchError((err) => {
-          console.warn(err);
-          console.log('sucedio un error');
-          return throwError('API ERROR');
-        })
-      );
+    this.selectedFarm.getError().subscribe(
+      (success) => {
+        console.log(success);
+      },
+      (error) => {
+        if (error.status == 404) {
+          this.snackbar = true;
+          const timeSnackbar = setTimeout(() => {
+            this.snackbar = false;
+          }, 5000);
+        }
+        console.log(error);
+      }
+    );
   }
 }
