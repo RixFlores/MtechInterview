@@ -11,6 +11,8 @@ import { HelloComponent } from "./hello.component";
 import { MtSampleNavComponent } from "./mt-sample-exercise/mt-sample-nav.component";
 import { SAMPLE_COMPONENTS } from "./mt-sample-exercise";
 import { MtAutoCompleteComponent } from "./mt-autocomplete/mt-autocomplete.component";
+import { farmDirective } from "./mt-sample-exercise/farm.directive";
+import { MtSampleDetailComponent } from "./mt-sample-exercise/mt-sample-detail.component";
 
 @NgModule({
   imports: [
@@ -21,9 +23,10 @@ import { MtAutoCompleteComponent } from "./mt-autocomplete/mt-autocomplete.compo
     RouterModule.forRoot([
       { path: "list-detail", component: MtSampleNavComponent },
       { path: "auto-complete", component: MtAutoCompleteComponent }
-    ])
+    ]),
   ],
-  declarations: [AppComponent, HelloComponent, SAMPLE_COMPONENTS, MtAutoCompleteComponent],
-  bootstrap: [AppComponent]
+  declarations: [AppComponent, HelloComponent, SAMPLE_COMPONENTS, MtAutoCompleteComponent,farmDirective],
+  bootstrap: [AppComponent],
+  entryComponents: [MtSampleDetailComponent]
 })
 export class AppModule {}

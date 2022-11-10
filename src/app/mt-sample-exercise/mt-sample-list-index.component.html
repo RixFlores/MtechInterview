@@ -22,7 +22,7 @@
     </div>
   </div>
   <div class="col-md-6">
-    <button class="btn btn-outline-danger btn-sm">Error Button</button>
+    <button class="btn btn-outline-danger btn-sm" (click)="errorResponse()">Error Button</button>
   </div>
 </div>
 <div class="row mt-2">
@@ -32,15 +32,18 @@
         <th scope="col">Farm No</th>
         <th scope="col">Farm Name</th>
         <th scope="col">Active Date</th>
+        <th scope="col">Details</th>
       </tr>
-			<tr *ngFor="let farm of dataFiltered">
+			<tr *ngFor="let farm of data">
 				<td scope="col">{{farm.FarmNo}}</td>
 				<td scope="col">{{farm.FarmName}}</td>
-				<td scope="col">{{farm.ActiveDate}}</td>
+				<td scope="col">{{farm.ActiveDate | date:'MMMM - dd - yyyy'}}</td>
+        <button class="btn btn-success" (click)="setItem(farm)">Details</button>
 			</tr>
     </thead>
   </table>
 </div>
+<ng-template dinamicComponent></ng-template>
 
 <div class="row">
   <!-- The sf grid should be here -->

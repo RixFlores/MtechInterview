@@ -5,9 +5,15 @@ import * as data from './mock-data.json';
   providedIn: 'root',
 })
 export class SelectedFarmService {
+  public item: any;
+
   getData() {
-    console.log(data.default);
-    console.log(typeof data);
     return data.default;
+  }
+  setItem(item: any) {
+    this.item = item;
+  }
+  getItem() {
+    return this.item;
   }
 }
