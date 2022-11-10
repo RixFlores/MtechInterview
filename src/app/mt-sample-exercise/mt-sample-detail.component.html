@@ -1,4 +1,4 @@
-<h5 >Farm Selected</h5>
+<!-- <h5 >Farm Selected</h5>
 
 <div class="card" style="width: 18rem;">
   <div class="card-header">
@@ -10,4 +10,38 @@
     <li class="list-group-item">Farm address: {{data.Address}}</li>
     <li class="list-group-item">Farm active: {{data.ActiveDate | date:'MMMM - dd - yyyy'}}</li>
   </ul>
+</div>
+ -->
+
+<div class="control-section mb-4">
+  <ejs-grid [dataSource]="data" height="auto">
+    <e-columns>
+      <e-column
+        field="FarmNo"
+        headerText="Farm No"
+        width="100"
+        textAlign="Right"
+      ></e-column>
+      <e-column field="Id" headerText="Farm Id" width="100"></e-column>
+      <e-column
+        field="FarmName"
+        headerText="Farm Name"
+        width="100"
+        textAlign="Right"
+      ></e-column>
+      <e-column
+        field="Address"
+        headerText="Farm Address"
+        width="100"
+        textAlign="Right"
+      ></e-column>
+      <e-column
+        field="ActiveDate"
+        headerText="Farm Active date"
+        width="100"
+        format="yMd"
+        textAlign="Right"
+      ></e-column>
+    </e-columns>
+  </ejs-grid>
 </div>

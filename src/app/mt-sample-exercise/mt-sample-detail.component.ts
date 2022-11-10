@@ -14,9 +14,10 @@ import {
   templateUrl: './mt-sample-detail.component.html',
 })
 export class MtSampleDetailComponent {
-  public data: any;
+  public data: Object[] = [];
 
   constructor(private selectedFarm: SelectedFarmService) {
-    this.data = this.selectedFarm.getItem();
+    this.data.push(this.selectedFarm.getItem());
+    console.log(this.data)
   }
 }
